@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do App</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .container{
+            margin-top:1em;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        ul{
+            margin:0;
+            padding:0;
+            list-style:none;
+            width:400px;
+            display:flex;
+            flex-direction: column;
+        }
+        li{
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            margin-block:0.5em;
+            align-items: center;
+        }
+        a{
+            text-decoration: none;
+            color:white;
+        }
+        .btn{
+background-color: lime;
+padding:0.5em;
+border-radius: 0.2em;
+        }
+        input{
+            height:30px;
+        }
+        button{
+            border: none;
+            width:50px;
+            cursor: pointer;
+        }
+        span{
+            display:inline-block;
+            width:100px;
+        }
+        input[type='checkbox']
+        {
+         width:20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form method="POST" action="/add">
+            <input type="text" name="input">
+            <button class="btn">Add</button>
+        </form>
+        <form method="POST" action="/search">
+            <input type="text" name="search">
+            <button class="btn">Search</button>
+        </form>
+        <ul>
+    {%for todo in list%}
+    <li><span>{{todo.text}} </span><input type="checkbox"><a href="/delete{{todo.id}}" class="btn">Delete</a></li>
+    {%endfor%}
+    </ul>
+    </div>
+
+</body>
+</html>
